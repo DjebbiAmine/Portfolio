@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+.navcontainer ul{
+    list-style: none; 
+}
+
+
+
+.navcontainer  a{
+    text-decoration:none;
+}
