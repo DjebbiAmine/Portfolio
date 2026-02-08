@@ -517,6 +517,62 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+/* Call button: reuse play button visuals for phone call CTA */
+#hero .call-btn {
+  width: 94px;
+  height: 94px;
+  margin: 0 auto;
+  background: radial-gradient(#009961 50%, rgba(0, 153, 97, 0.4) 52%);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  font-size: 16px;
+}
+
+#hero .call-btn i {
+  font-size: 28px;
+  z-index: 101;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#hero .call-btn::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation: pulsate-btn 3s;
+  animation: pulsate-btn 3s;
+  -webkit-animation-direction: forwards;
+  animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: steps;
+  animation-timing-function: steps;
+  opacity: 1;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 153, 97, 0.7);
+  top: -15%;
+  left: -15%;
+  background: rgba(198, 16, 0, 0);
+}
+
+#hero .call-btn:hover i {
+  color: #009961;
+  transform: scale(1.05);
+}
+
+#hero .call-btn:hover::before {
+  -webkit-animation: none;
+  animation: none;
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -912,6 +968,7 @@ section {
 .portfolio .portfolio-item {
   margin-bottom: 30px;
   overflow: hidden;
+  position: relative;
 }
 
 .portfolio .portfolio-item img {
@@ -1521,4 +1578,18 @@ section {
 
 #footer .credits a:hover {
   color: #009961;
+}
+
+/* Fix: ensure fragment/anchor navigation doesn't get covered by fixed header */
+:root {
+  --header-offset: 80px;
+}
+
+html {
+  scroll-padding-top: var(--header-offset);
+}
+
+/* For browsers that scroll elements into view, give sections a margin so they're visible */
+section {
+  scroll-margin-top: calc(var(--header-offset) + 8px);
 }
